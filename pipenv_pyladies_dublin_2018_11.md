@@ -356,7 +356,8 @@ $ du -shc (pipenv --venv)
 
 Links
 
-* https://pipenv.readthedocs.io/en/latest/
-* https://packaging.python.org/
-* https://github.com/pyenv/pyenv
-* https://docs.python-guide.org/
+* This Talk - https://github.com/micktwomey/2018-11_PyLadies_Dublin_pipenv
+* pipenv - https://pipenv.readthedocs.io/en/latest/
+* python packaging guide - https://packaging.python.org/
+* pyenv - https://github.com/pyenv/pyenv
+* Hitchiker's Guide to Python - https://docs.python-guide.org/
