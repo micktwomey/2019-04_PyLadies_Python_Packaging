@@ -2,11 +2,12 @@ theme: Huerta
 
 ![50%,right](pipenv_logo.png)
 
-#[fit] pipenv
-# PyLadies Dublin
-# November 2018
-## Michael Twomey
-## @micktwomey
+# A Potted History of Python Packaging
+### (Or how we got to Pipenv)
+## PyCon Limerick
+## March 2019
+### Michael Twomey
+### @micktwomey
 
 
 ---
@@ -21,7 +22,7 @@ theme: Huerta
 
 ---
 
-# Problems We Need to Solve
+# Problems We Need to Solve in 1995
 
 * We need to distribute python libraries
 * We need to find and install libraries (we have newsgroups!)
@@ -29,6 +30,21 @@ theme: Huerta
 * We clobber packages in the system (we don't know this is a bad thing yet)
 * We need to use the latest and greatest versions of dependencies (sensibly)
 * We need to stay sane
+
+---
+
+# cp -r
+
+```sh
+cp somemodule.py myapp
+cd myapp
+python main.py
+```
+
+* Simple, works for most cases
+* Pretty close to how I've built apps to ship to someone's desktop
+* Advanced: cp -r
+* Super advanced: python path .pth files
 
 ---
 
@@ -42,6 +58,8 @@ setup(name="my_package", version="1.0", ...)
 ```
 
 ```sh
+$ unzip my_package-1.0.zip
+$ cd my_package-1.0
 $ python setup.py install
 ```
 
@@ -53,9 +71,10 @@ $ python setup.py install
 
 # Lots of Attempts to Improve
 
-* setuptools, easy_install, eggs, wheels, many more
+* easy_install, eggs, setuptools, wheels, many more
 * Iterations and refinements on the contents of libraries
 * Gave us the notion of dependencies and library versions (e.g. `django <= 2.0.1`)
+* eggs created to act like java jars for python. Latest iteration of idea are wheels. (AFAIK it's snake eggs and cheese wheels)
 * Didn't solve lots of projects with different versions of same libraries
 
 ---
@@ -79,6 +98,8 @@ Successfully installed django-1.11.16 pytz-2018.7
 ---
 
 # pip bonus: uninstall
+
+(easy_install did this too.)
 
 ```
 $ pip uninstall django pytz
@@ -302,7 +323,7 @@ DB_SECRET_PASSWORD=sekret
 
 # Bonus: pyenv
 
-Free yourself from the tyranny of system python installs!
+Free yourself from the tyranny of system python installs! (Not pipenv related but works well with pipenv.)
 
 ```
 $ echo $PYENV_ROOT
@@ -337,7 +358,7 @@ Autodetects Pipfile and loads correct virtualenv
 # Bonus: Stores Virtualenvs Outside of Source
 
 * Keeps your source directory small
-* Don't save 100s MB in your Dropbox
+* Keep your source in Dropbox but don't pay for your libs :)
 
 ```
 $ ls -a
@@ -356,8 +377,8 @@ $ du -shc (pipenv --venv)
 
 Links
 
-* This Talk - https://github.com/micktwomey/2018-11_PyLadies_Dublin_pipenv
-* pipenv - https://pipenv.readthedocs.io/en/latest/
-* python packaging guide - https://packaging.python.org/
-* pyenv - https://github.com/pyenv/pyenv
-* Hitchiker's Guide to Python - https://docs.python-guide.org/
+* This Talk - `https://github.com/micktwomey/2019-03_PyCon_Limerick_pipenv`
+* pipenv - `https://pipenv.readthedocs.io/en/latest/`
+* python packaging guide - `https://packaging.python.org/`
+* pyenv - `https://github.com/pyenv/pyenv`
+* Hitchiker's Guide to Python - `https://docs.python-guide.org/`
