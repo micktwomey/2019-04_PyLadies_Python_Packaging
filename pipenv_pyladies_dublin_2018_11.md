@@ -20,6 +20,8 @@ theme: Huerta
 
 (In the wrong order and omitting bits to suit my narrative.)
 
+(Mostly based on git or svn commit logs.)
+
 ---
 
 # Problems We Need to Solve in 1995
@@ -33,7 +35,7 @@ theme: Huerta
 
 ---
 
-# cp -r
+# 1995: cp -r
 
 ```sh
 cp somemodule.py myapp
@@ -48,9 +50,19 @@ python main.py
 
 ---
 
-# distutils
+# 1998: distutils
 
 > In the beginning there was setup.py
+
+(Well, there was Greg Ward in December 1998.)
+
+* For packaging libraries, not so good for apps
+* No dependency management
+* Installs into python's `site-packages`
+
+---
+
+# distutils example
 
 ```python
 from distutils.core import setup
@@ -63,25 +75,58 @@ $ cd my_package-1.0
 $ python setup.py install
 ```
 
-* For packaging libraries, not so good for apps
-* No dependency management
-* Installs into python's `site-packages`
+---
+
+# 2002: pypi
+
+Python Package Index (also known as the cheeseshop). Started by Richard Jones.
+
+* Provided official central index to find python packages.
+* First sprint in 2003 held on table beside the pypy project, very confusing (pypi and pypy)
+* Original code derived from Roundup (the bug tracking tool used by Python)
+* Still had to download and install packages manually
+* Partially inspired by sites like freshmeat.net (really)
 
 ---
 
-# Lots of Attempts to Improve
-
-* easy_install, eggs, setuptools, wheels, many more
-* Iterations and refinements on the contents of libraries
-* Gave us the notion of dependencies and library versions (e.g. `django <= 2.0.1`)
-* eggs created to act like java jars for python. Latest iteration of idea are wheels. (AFAIK it's snake eggs and cheese wheels)
-* Didn't solve lots of projects with different versions of same libraries
+![inline](freshmeat.net.png)
 
 ---
 
-# pip
+# 2004/2005: Setuptools, eggs and easy_install
 
-Built on setuptools work to give us way to download and install packages
+* Created by Phillip J Eby
+* setuptools attempted many new ideas, some big improvements on distutils (`find_packages()`!)
+* easy_install used parsing of pypi HTML to find and install dependencies
+* eggs created to act like java jars for python. Current iteration of this idea are wheels. (AFAIK it's snake eggs and cheese wheels)
+* Introduced dependencies specified in setup.py (including the `Django >= 1.2` syntax)
+
+---
+
+# 2007: virtualenv
+
+Exploited a neat trick: python looks for its libraries relative to the python binary. Could create symlinks from a copy of python back to system, creating an independent python install. Also created by Ian Bicking.
+
+```
+$ python -m venv /tmp/myenv
+$ find /tmp/myenv
+/tmp/myenv/bin/python3.7
+/tmp/myenv/bin/activate
+...
+/tmp/myenv/lib/python3.7/site-packages/
+$ . /tmp/myenv/bin/activate
+$ which python
+/tmp/myenv/bin/python
+$ pip list
+pip        10.0.1
+setuptools 39.0.1
+```
+
+---
+
+# 2008: pip
+
+Built on setuptools work to give us way to download and install packages. Previously called pyinstall. Started by Ian Bicking
 
 ```sh
 $ pip install 'django<2.0'
@@ -147,37 +192,6 @@ Successfully installed Django-1.11.16 pytz-2018.7
 * We've solved distributing python libraries
 * We've solved finding and installing libraries
 * We've solved specifying dependencies for a project
-* We're still clobbering packages in the system
-    - Workaround: build a separate python per project (boo)
-
----
-
-# virtualenv
-
-Exploited a neat trick: python looks for its libraries relative to the python binary. Could create symlinks from a copy of python back to system, creating an independent python install
-
-```
-$ python -m venv /tmp/myenv
-$ find /tmp/myenv
-/tmp/myenv/bin/python3.7
-/tmp/myenv/bin/activate
-...
-/tmp/myenv/lib/python3.7/site-packages/
-$ . /tmp/myenv/bin/activate
-$ which python
-/tmp/myenv/bin/python
-$ pip list
-pip        10.0.1
-setuptools 39.0.1
-```
-
----
-
-# So far
-
-* We've solved distributing python libraries
-* We've solved finding and installing libraries
-* We've solved specifying dependencies for a project
 * We've solved clobbering system python
 
 ---
@@ -195,10 +209,28 @@ setuptools 39.0.1
 * Each project has to figure out how to manage virtualenvs
     - Some impose patterns which are hard for some people to work with
 * Security is opt in
+* Lots of rough edges which required working around in large projects
 
 ---
 
-# pipenv (finally!)
+# 2011: distribute
+
+* Phillip Eby had largely discontinued development of setuptools and easy_install at this point
+* Python packaging efforts had somewhat stalled
+* NPM, Gems and friends were doing cools stuff
+* Tarek Ziadé forked setuptools to reinvigorate project
+
+---
+
+# 2011: pypa
+
+* Python Packaging Authority formed to take over maintenance of python packaging
+* Works hard to update python packaging infrastructure (including pypi itself) from 2011 through to today
+* Made the critical mistake of not picking "Ministry of Installation" as their name
+
+---
+
+# 2017: pipenv
 
 * Computer science solution: Add another layer of abstraction
 * Handles pip and virtualenv for you
@@ -206,6 +238,7 @@ setuptools 39.0.1
 * More secure by default
 * Nice little snake emoji
 * And more!
+* Started by Kenneth Reitz
 
 ---
 
