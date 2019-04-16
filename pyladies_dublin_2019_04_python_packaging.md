@@ -4,10 +4,14 @@ theme: Huerta
 
 # A Potted History of Python Packaging
 ### (Or how we got to Pipenv)
-## PyCon Limerick
-## March 2019
+## PyLadies Dublin
+## April 2019
 ### Michael Twomey
 ### @micktwomey
+
+^ Introduce myself!
+
+^ Developing python since 2000
 
 
 ---
@@ -35,7 +39,8 @@ theme: Huerta
 
 ---
 
-# 1995: cp -r
+# cp -r
+## Python 1.0 - 1995
 
 ```sh
 cp somemodule.py myapp
@@ -50,7 +55,8 @@ python main.py
 
 ---
 
-# 1998: distutils
+# distutils
+## Python 1.5 - 1998
 
 > In the beginning there was setup.py
 
@@ -77,7 +83,8 @@ $ python setup.py install
 
 ---
 
-# 2002: pypi
+# pypi
+## Python 2.2 - 2002
 
 Python Package Index (also known as the cheeseshop). Started by Richard Jones.
 
@@ -87,13 +94,16 @@ Python Package Index (also known as the cheeseshop). Started by Richard Jones.
 * Still had to download and install packages manually
 * Partially inspired by sites like freshmeat.net (really)
 
+^ Yours truly was part of the original sprint
+
 ---
 
 ![inline](freshmeat.net.png)
 
 ---
 
-# 2004/2005: Setuptools, eggs and easy_install
+# Setuptools, eggs and easy_install
+## Python 2.4 - 2004/2005
 
 * Created by Phillip J Eby
 * setuptools attempted many new ideas, some big improvements on distutils (`find_packages()`!)
@@ -103,7 +113,8 @@ Python Package Index (also known as the cheeseshop). Started by Richard Jones.
 
 ---
 
-# 2007: virtualenv
+# virtualenv
+## Python 2.5 - 2007
 
 Exploited a neat trick: python looks for its libraries relative to the python binary. Could create symlinks from a copy of python back to system, creating an independent python install. Also created by Ian Bicking.
 
@@ -124,7 +135,8 @@ setuptools 39.0.1
 
 ---
 
-# 2008: pip
+# pip
+## Python 2.6 & Python 3.0 - 2008
 
 Built on setuptools work to give us way to download and install packages. Previously called pyinstall. Started by Ian Bicking
 
@@ -213,7 +225,8 @@ Successfully installed Django-1.11.16 pytz-2018.7
 
 ---
 
-# 2011: distribute
+# distribute
+## Python 2.7 & Python 3.2 - 2011
 
 * Phillip Eby had largely discontinued development of setuptools and easy_install at this point
 * Python packaging efforts had somewhat stalled
@@ -230,15 +243,16 @@ Successfully installed Django-1.11.16 pytz-2018.7
 
 ---
 
-# 2017: pipenv
+# pipenv
+## Python 3.6 - 2017
 
+* Started by Kenneth Reitz
 * Computer science solution: Add another layer of abstraction
 * Handles pip and virtualenv for you
 * Handles both high level dependencies (`Pipfile`) and specific versions (`Pipfile.lock`)
 * More secure by default
 * Nice little snake emoji
 * And more!
-* Started by Kenneth Reitz
 
 ---
 
@@ -410,7 +424,7 @@ $ du -shc (pipenv --venv)
 
 Links
 
-* This Talk - `https://github.com/micktwomey/2019-03_PyCon_Limerick_pipenv`
+* This Talk - `https://github.com/micktwomey/2019-04_PyLadies_Python_Packaging`
 * pipenv - `https://pipenv.readthedocs.io/en/latest/`
 * python packaging guide - `https://packaging.python.org/`
 * pyenv - `https://github.com/pyenv/pyenv`
